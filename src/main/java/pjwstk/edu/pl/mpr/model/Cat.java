@@ -1,4 +1,4 @@
-package pjwstk.edu.pl.lab2.model;
+package pjwstk.edu.pl.mpr.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

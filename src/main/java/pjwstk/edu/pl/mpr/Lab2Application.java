@@ -1,4 +1,4 @@
-package pjwstk.edu.pl.lab2;
+package pjwstk.edu.pl.mpr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

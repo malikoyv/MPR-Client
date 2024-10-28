@@ -1,11 +1,10 @@
-package pjwstk.edu.pl.lab2.repository;
+package pjwstk.edu.pl.mpr.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pjwstk.edu.pl.lab2.model.Cat;
+import pjwstk.edu.pl.mpr.model.Cat;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface CatRepository extends CrudRepository<Cat, Long> {

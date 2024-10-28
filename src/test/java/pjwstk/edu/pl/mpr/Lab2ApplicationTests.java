@@ -1,4 +1,4 @@
-package pjwstk.edu.pl.lab2;
+package pjwstk.edu.pl.mpr;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,18 +1,13 @@
-package pjwstk.edu.pl.lab2.service;
+package pjwstk.edu.pl.mpr.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.webservices.server.AutoConfigureMockWebServiceClient;
-import org.springframework.boot.test.context.SpringBootTest;
-import pjwstk.edu.pl.lab2.model.Cat;
-import pjwstk.edu.pl.lab2.repository.CatRepository;
+import pjwstk.edu.pl.mpr.model.Cat;
+import pjwstk.edu.pl.mpr.repository.CatRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

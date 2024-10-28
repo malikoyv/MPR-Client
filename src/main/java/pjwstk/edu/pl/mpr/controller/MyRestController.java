@@ -1,15 +1,14 @@
-package pjwstk.edu.pl.lab2.controller;
+package pjwstk.edu.pl.mpr.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pjwstk.edu.pl.lab2.model.Cat;
-import pjwstk.edu.pl.lab2.repository.CatRepository;
-import pjwstk.edu.pl.lab2.service.MyRestService;
+import pjwstk.edu.pl.mpr.model.Cat;
+import pjwstk.edu.pl.mpr.repository.CatRepository;
+import pjwstk.edu.pl.mpr.service.MyRestService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class MyRestController {
