@@ -12,7 +12,7 @@ public class Cat {
     private Long id;
     private String name;
     private int age;
-    private long identificator;
+    private long identificator = 0;
 
     protected Cat() {}
 

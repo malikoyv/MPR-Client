@@ -19,5 +19,4 @@ public class MyRestService {
     public MyRestService(CatRepository catRepository) {
         this.catRepository = catRepository;
     }
-
 }
