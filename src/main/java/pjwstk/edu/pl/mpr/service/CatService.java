@@ -45,11 +45,6 @@ public class CatService {
 
     public Cat addCat(Cat cat) {
         cat.setIdentificator();
-
-        if (cat == null){
-            throw new CatIsNullException("Cat's body is null");
-        }
-
         return catRepository.save(cat);
     }
 
