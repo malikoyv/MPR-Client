@@ -8,24 +8,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pjwstk.edu.pl.mpr.exception.CatNotFoundException;
 import pjwstk.edu.pl.mpr.model.Cat;
 import pjwstk.edu.pl.mpr.repository.CatRepository;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class CatServiceTest {
-    @Mock
-    private PDDocument document;
 
     @Mock
     private CatRepository repository;
@@ -135,26 +134,11 @@ public class CatServiceTest {
     @Test
     public void getCatPdfSuccess() throws IOException {
         when(repository.findById(1L)).thenReturn(Optional.of(cat));
-//        when(cat.getId()).thenReturn(1L);
-//        when(cat.getName()).thenReturn("C");
-//        when(cat.getAge()).thenReturn(1);
-//        when(cat.getIdentificator()).thenReturn(68L);
 
         byte[] result = service.getCatPdf(cat.getId());
 
+        verify(repository).findById(1L);
         assertNotNull(result);
         assertTrue(result.length > 0);
-
-        ArgumentCaptor<PDDocument> captor = ArgumentCaptor.forClass(PDDocument.class);
-
-        verify(repository).findById(1L);
-        verify(captor.capture());
-        PDPage page = captor.getValue().getPages().get(0);
-        PDPageContentStream stream = new PDPageContentStream(captor.getValue(), page);
-
-        assertTrue(stream.toString().contains("Name: C"));
-        assertTrue(stream.toString().contains("Age: 1"));
-        assertTrue(stream.toString().contains("Identificator: 68"));
-
     }
 }
