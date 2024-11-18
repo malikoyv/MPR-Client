@@ -1,17 +1,15 @@
 package pjwstk.edu.pl.mpr.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pjwstk.edu.pl.mpr.exception.CatIsNullException;
 import pjwstk.edu.pl.mpr.exception.CatNotFoundException;
-import pjwstk.edu.pl.mpr.exception.EmptyString;
 import pjwstk.edu.pl.mpr.model.Cat;
 import pjwstk.edu.pl.mpr.repository.CatRepository;
 import pjwstk.edu.pl.mpr.service.CatService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -60,5 +58,16 @@ public class CatController {
     @GetMapping("/getCatsLower/{name}")
     public ResponseEntity<List<Cat>> getCatsLower(@PathVariable String name) {
         return new ResponseEntity<>(catService.changeAllUpperToLowerByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/getCatPdf/{id}")
+    public ResponseEntity<byte[]> getCatPdf(@PathVariable Long id) throws IOException {
+        byte[] pdf = catService.getCatPdf(id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.inline().filename("catInfo.pdf").build());
+
+        return new ResponseEntity<>(pdf, headers, HttpStatus.OK);
     }
 }

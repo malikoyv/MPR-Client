@@ -20,6 +20,10 @@ public class Cat {
         return name;
     }
 
+    public Long getId(){
+        return id;
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -41,6 +45,12 @@ public class Cat {
             this.identificator += this.name.charAt(i);
         }
         this.identificator += (char)this.age;
+    }
+
+    public Cat(Long id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public Cat(String name, int age){

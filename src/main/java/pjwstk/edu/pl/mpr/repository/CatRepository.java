@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import pjwstk.edu.pl.mpr.model.Cat;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CatRepository extends CrudRepository<Cat, Long> {
