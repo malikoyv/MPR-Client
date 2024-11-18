@@ -141,4 +141,11 @@ public class CatServiceTest {
         assertNotNull(result);
         assertTrue(result.length > 0);
     }
+
+    @Test
+    public void getCatPdfNotFound() {
+        when(repository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(CatNotFoundException.class, () -> service.getCatPdf(1L));
+    }
 }
