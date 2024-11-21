@@ -1,13 +1,11 @@
 package pjwstk.edu.pl.mpr.service;
 
-import org.antlr.v4.runtime.atn.SemanticContext;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pjwstk.edu.pl.mpr.exception.CatIsNullException;
 import pjwstk.edu.pl.mpr.exception.CatNotFoundException;
 import pjwstk.edu.pl.mpr.exception.EmptyString;
 import pjwstk.edu.pl.mpr.model.Cat;
@@ -149,17 +147,7 @@ public class CatService {
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        contentStream.beginText();
-        contentStream.setFont(new PDType1Font(TIMES_ROMAN), 12);
-        contentStream.newLineAtOffset(100, 700);
-        contentStream.showText("Name: " + catObj.getName());
-        contentStream.newLineAtOffset(0, -15);
-        contentStream.showText("Age: " + catObj.getAge());
-        contentStream.newLineAtOffset(0, -15);
-        contentStream.showText("Identificator: " + catObj.getIdentificator());
-        contentStream.newLineAtOffset(0, -15);
-        contentStream.endText();
-        contentStream.close();
+        writeContent(contentStream, catObj);
         document.addPage(page);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -167,6 +155,20 @@ public class CatService {
         document.close();
 
         return byteArrayOutputStream.toByteArray();
+    }
+
+    protected void writeContent(PDPageContentStream contentStream, Cat cat) throws IOException {
+        contentStream.beginText();
+        contentStream.setFont(new PDType1Font(TIMES_ROMAN), 12);
+        contentStream.newLineAtOffset(100, 700);
+        contentStream.showText("Name: " + cat.getName());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Age: " + cat.getAge());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Identificator: " + cat.getIdentificator());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.endText();
+        contentStream.close();
     }
 
 }

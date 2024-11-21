@@ -3,6 +3,8 @@ package pjwstk.edu.pl.mpr.service;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -16,9 +18,12 @@ import pjwstk.edu.pl.mpr.repository.CatRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.rmi.server.ExportException;
 import java.util.List;
 import java.util.Optional;
 
+import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.TIMES_ROMAN;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -135,11 +140,20 @@ public class CatServiceTest {
     public void getCatPdfSuccess() throws IOException {
         when(repository.findById(1L)).thenReturn(Optional.of(cat));
 
-        byte[] result = service.getCatPdf(cat.getId());
+        CatService spyService = spy(service);
+        ArgumentCaptor<PDPageContentStream> contentStreamCaptor = ArgumentCaptor.forClass(PDPageContentStream.class);
+
+        byte[] result = spyService.getCatPdf(cat.getId());
 
         verify(repository).findById(1L);
         assertNotNull(result);
         assertTrue(result.length > 0);
+
+        verify(spyService).writeContent(any(PDPageContentStream.class), eq(cat));
+        verify(spyService, times(1)).writeContent(contentStreamCaptor.capture(), eq(cat));
+
+        PDPageContentStream capturedContentStream = contentStreamCaptor.getValue();
+        assertNotNull(capturedContentStream);
     }
 
     @Test
@@ -148,4 +162,6 @@ public class CatServiceTest {
 
         assertThrows(CatNotFoundException.class, () -> service.getCatPdf(1L));
     }
+
+
 }
