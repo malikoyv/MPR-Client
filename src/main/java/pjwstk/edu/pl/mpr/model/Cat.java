@@ -14,7 +14,7 @@ public class Cat {
     private int age;
     private long identificator = 0;
 
-    protected Cat() {}
+    public Cat() {}
 
     public String getName(){
         return name;

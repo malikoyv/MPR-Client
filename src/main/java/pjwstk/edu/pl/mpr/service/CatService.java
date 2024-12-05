@@ -31,10 +31,14 @@ public class CatService {
 
     public List<Cat> getAll(){
         List<Cat> allCats = new ArrayList<>();
-        catRepository.findAll().forEach(allCats::add);
 
-        if (allCats.isEmpty()){
-            throw new CatNotFoundException("There is no cat in the database");
+        try {
+            catRepository.findAll().forEach(allCats::add);
+            if (allCats.isEmpty()){
+                throw new CatNotFoundException("There is no cat in the database");
+            }
+        } catch (CatNotFoundException e){
+            return null;
         }
 
         return allCats;
@@ -96,6 +100,28 @@ public class CatService {
         }
 
         return cats;
+    }
+
+    public Cat getById(Long id){
+        if (id < 0){
+            throw new EmptyString("ID is not valid");
+        }
+
+        Optional<Cat> cat = catRepository.findById(id);
+
+        if (cat.isEmpty()) {
+            throw new CatNotFoundException("Cat was not found");
+        }
+
+        return cat.get();
+    }
+
+    public void updateCat(Cat cat){
+        if (cat.getId() != null) {
+            catRepository.save(cat);
+        } else {
+            throw new IllegalArgumentException("Cat ID is required for updating a record.");
+        }
     }
 
     public Cat addCatWithUpperName(String name, int age){
