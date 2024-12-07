@@ -12,7 +12,7 @@
 
     <hr>
         <form action="#" th:action="@{/save}" th:object="${cat}" method="POST">
-            <input type="hidden" th:field="${cat.id}" />
+            <input type="hidden" th:field="${cat.id}">
             <input type="text" th:field="${cat.name}" placeholder="Cat Name" class="form-control mb-4 col-4" required>
             <input type="number" th:field="${cat.age}" placeholder="Cat Age" class="form-control mb-4 col-4" required>
             <button type="submit" class="btn btn-info col-2">Update Cat</button>

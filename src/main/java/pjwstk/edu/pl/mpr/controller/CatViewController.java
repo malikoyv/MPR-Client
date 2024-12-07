@@ -3,13 +3,12 @@ package pjwstk.edu.pl.mpr.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pjwstk.edu.pl.mpr.model.Cat;
 import pjwstk.edu.pl.mpr.repository.CatRepository;
 import pjwstk.edu.pl.mpr.service.CatService;
+
+import java.util.List;
 
 @Controller
 public class CatViewController {
@@ -25,10 +24,15 @@ public class CatViewController {
         return "index";
     }
 
-    @GetMapping("/getCatByName/{name}")
-    public String getCatByName(@PathVariable(value = "name") String name, Model model) {
-        model.addAttribute("cat", catService.getByName(name));
-        return "redirect:/";
+    @GetMapping("/getCatByName")
+    public String getCatByName(@RequestParam(value = "name", required = false) String name, Model model) {
+        if (name == null || name.isEmpty()) {
+            model.addAttribute("allCats", catService.getAll());
+        } else {
+            model.addAttribute("allCats", catService.getByName(name));
+        }
+
+        return "index";
     }
 
     @GetMapping("/addNewCat")

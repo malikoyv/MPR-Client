@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface CatRepository extends CrudRepository<Cat, Long> {
     List<Cat> findByName(String name);
     List<Cat> findByAge(int age);
+    List<Cat> findByNameContainingIgnoreCase(String name);
 }

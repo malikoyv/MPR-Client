@@ -31,21 +31,17 @@ public class CatService {
 
     public List<Cat> getAll(){
         List<Cat> allCats = new ArrayList<>();
+        catRepository.findAll().forEach(allCats::add);
 
-        try {
-            catRepository.findAll().forEach(allCats::add);
-            if (allCats.isEmpty()){
-                throw new CatNotFoundException("There is no cat in the database");
-            }
-        } catch (CatNotFoundException e){
-            return null;
+        if (allCats.isEmpty()){
+            throw new CatNotFoundException("There is no cat in the database");
         }
 
         return allCats;
     }
 
     public List<Cat> getByName(final String name) {
-        List<Cat> cats = catRepository.findByName(name);
+        List<Cat> cats = catRepository.findByNameContainingIgnoreCase(name);
 
         if (cats == null || cats.isEmpty()){
             throw new CatNotFoundException("Cat not found");
