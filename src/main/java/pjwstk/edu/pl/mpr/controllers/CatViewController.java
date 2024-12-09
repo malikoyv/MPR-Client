@@ -1,14 +1,12 @@
-package pjwstk.edu.pl.mpr.controller;
+package pjwstk.edu.pl.mpr.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pjwstk.edu.pl.mpr.model.Cat;
-import pjwstk.edu.pl.mpr.repository.CatRepository;
-import pjwstk.edu.pl.mpr.service.CatService;
-
-import java.util.List;
+import pjwstk.edu.pl.mpr.models.Cat;
+import pjwstk.edu.pl.mpr.repositories.CatRepository;
+import pjwstk.edu.pl.mpr.services.CatService;
 
 @Controller
 public class CatViewController {

@@ -1,4 +1,4 @@
-package pjwstk.edu.pl.mpr.service;
+package pjwstk.edu.pl.mpr.services;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -6,10 +6,10 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pjwstk.edu.pl.mpr.exception.CatNotFoundException;
-import pjwstk.edu.pl.mpr.exception.EmptyString;
-import pjwstk.edu.pl.mpr.model.Cat;
-import pjwstk.edu.pl.mpr.repository.CatRepository;
+import pjwstk.edu.pl.mpr.exceptions.CatNotFoundException;
+import pjwstk.edu.pl.mpr.exceptions.EmptyString;
+import pjwstk.edu.pl.mpr.models.Cat;
+import pjwstk.edu.pl.mpr.repositories.CatRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

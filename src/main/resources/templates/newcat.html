@@ -16,15 +16,14 @@
     <form action="#" th:action="@{/save}" th:object="${cat}" method="POST">
         <input type="hidden" th:field="${cat.id}" />
         <label>Cat Name:</label>
-        <input type="text" th:field="${cat.name}" placeholder="Cat Name" class="form-control mb-4 col-4" required>
+        <input type="text" th:field="${cat.name}" placeholder="Cat Name" class="form-control mb-4 col-4" id="cat name input" required>
         <label>Cat Age:</label>
-        <input type="number" th:field="${cat.age}" placeholder="Cat Age"
-               class="form-control mb-4 col-4">
-        <button type="submit" class="btn btn-success col-2">Save</button>
+        <input type="number" th:field="${cat.age}" placeholder="Cat Age" class="form-control mb-4 col-4" id="cat age input">
+        <button type="submit" class="btn btn-success col-2" id="save new cat button">Save</button>
     </form>
     <hr>
 
-  <a th:href="@{/}"> Back to Home Page</a>
+  <a th:href="@{/}" id="back to home page link"> Back to Home Page</a>
 </div>
 </body>
 </html>

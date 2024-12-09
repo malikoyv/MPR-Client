@@ -13,13 +13,13 @@
     <hr>
         <form action="#" th:action="@{/save}" th:object="${cat}" method="POST">
             <input type="hidden" th:field="${cat.id}">
-            <input type="text" th:field="${cat.name}" placeholder="Cat Name" class="form-control mb-4 col-4" required>
-            <input type="number" th:field="${cat.age}" placeholder="Cat Age" class="form-control mb-4 col-4" required>
-            <button type="submit" class="btn btn-info col-2">Update Cat</button>
+            <input type="text" th:field="${cat.name}" placeholder="Cat Name" class="form-control mb-4 col-4" id="cat name update field" required>
+            <input type="number" th:field="${cat.age}" placeholder="Cat Age" class="form-control mb-4 col-4" id="cat age update field" required>
+            <button type="submit" class="btn btn-info col-2" id="update cat button">Update Cat</button>
         </form>
     <hr>
 
-    <a th:href="@{/}"> Back to Home Page</a>
+    <a th:href="@{/}" id="back to home page link update"> Back to Home Page</a>
 </div>
 </body>
 </html>

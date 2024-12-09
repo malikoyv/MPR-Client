@@ -1,29 +1,20 @@
-package pjwstk.edu.pl.mpr.service;
+package pjwstk.edu.pl.mpr.services;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pjwstk.edu.pl.mpr.exception.CatNotFoundException;
-import pjwstk.edu.pl.mpr.model.Cat;
-import pjwstk.edu.pl.mpr.repository.CatRepository;
+import pjwstk.edu.pl.mpr.exceptions.CatNotFoundException;
+import pjwstk.edu.pl.mpr.models.Cat;
+import pjwstk.edu.pl.mpr.repositories.CatRepository;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.rmi.server.ExportException;
 import java.util.List;
 import java.util.Optional;
 
-import static org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName.TIMES_ROMAN;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
