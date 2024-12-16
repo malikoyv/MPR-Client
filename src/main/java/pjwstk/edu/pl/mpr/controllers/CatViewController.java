@@ -5,16 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pjwstk.edu.pl.mpr.models.Cat;
-import pjwstk.edu.pl.mpr.repositories.CatRepository;
 import pjwstk.edu.pl.mpr.services.CatService;
 
 @Controller
 public class CatViewController {
     @Autowired
-    private CatRepository catRepository;
-
-    @Autowired
-    private CatService catService = new CatService(catRepository);
+    private CatService catService;
 
     @GetMapping("/")
     public String getAllCats(Model model) {
