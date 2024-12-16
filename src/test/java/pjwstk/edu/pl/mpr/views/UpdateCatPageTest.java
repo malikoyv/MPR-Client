@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pjwstk.edu.pl.mpr.models.Cat;
 import pjwstk.edu.pl.mpr.pages.AddCatPage;
 import pjwstk.edu.pl.mpr.pages.HomePage;
 import pjwstk.edu.pl.mpr.pages.UpdateCatPage;
-import pjwstk.edu.pl.mpr.repositories.CatRepository;
-import pjwstk.edu.pl.mpr.services.CatService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
